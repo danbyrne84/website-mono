@@ -4,10 +4,16 @@
     padding: 0px;
 }
 
+div.jumbotron h1 {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 38px;
+}
+
 div.jumbotron h1 small {
-    font-size: 35%;
+    font-size: 55%;
     display: block;
-    color: orange;
+    color: #428bca;
+    font-family: sans-serif;
 }
 
 div.feature-box {

@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@model dbnet2.Models.ViewModelBase
+
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -7,6 +9,7 @@
     <meta name="description" content="Software Developer from the NorthEast of England">
     <meta name="author" content="Dan Byrne">
     <link rel="shortcut icon" href="/ico/favicon.png">
+    <link href='http://fonts.googleapis.com/css?family=Press+Start+2P' rel='stylesheet' type='text/css'>
 
     <title>DanielByrne.net</title>
 
@@ -18,6 +21,12 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="/Scripts/bootstrap.min.js"></script>
+
   </head>
 
   <body>
@@ -35,15 +44,38 @@
       <footer>
         <p>&copy; Dan Byrne 2005-@DateTime.Now.Year</p>
         <p>Site constructed using ASP.NET 4.0, MVC 4, Razor, Nginx & Mono 3.2.4 (<a href="http://www.github.com/danbyrne84/website-mono">view source</a>)</p>      
+
+        <div class="row">
+            <div class="col-md-4 latest-visitors">
+                <strong>Stats</strong>
+            </div>
+
+            <div class="col-md-4 latest-visitors">
+                <strong>Some Other Stuff</strong>
+            </div>
+
+            @if (Model.LatestVisitors.Any())
+            {
+                <div class="col-md-4 latest-visitors">
+                    <strong>Latest Visitors</strong>
+                        <ul>
+                            @foreach(var visitor in Model.LatestVisitors)
+                            {
+                                <li><p><img src="/Content/images/flags/@(visitor.Country.ToUpper()).gif" /> @visitor.City @visitor.Country @visitor.Date
+                                    @if (visitor.LandingPage.Trim().Length > 1)
+                                    {
+                                        <br />@visitor.LandingPage
+                                    }
+                                    </p></li>
+                            }
+                        </ul>
+                </div>
+            }
+        </div>
+
       </footer>
 
     </div> <!-- /container -->
 
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="/Scripts/bootstrap.min.js"></script>
   </body>
 </html>

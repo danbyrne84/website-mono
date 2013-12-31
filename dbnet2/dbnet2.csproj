@@ -117,6 +117,7 @@
     <Compile Include="Models\Blog\BlogItemSummary.cs" />
     <Compile Include="Models\Blog\BlogReader.cs" />
     <Compile Include="Models\HomeViewModel.cs" />
+    <Compile Include="Models\ViewModelBase.cs" />
     <Compile Include="Models\Visitors\AccessLogReader.cs" />
     <Compile Include="Models\Visitors\IpInfoApi.cs" />
     <Compile Include="Models\Visitors\Visitor.cs" />

@@ -5,8 +5,8 @@ using System.Web;
 
 namespace dbnet2.Models
 {
-    public class HomeViewModel : ViewModelBase
+    public class ViewModelBase
     {
-        public IList<BlogItemSummary> BlogItems { get; set; }
+        public IList<Visitor> LatestVisitors { get; set; }
     }
 }

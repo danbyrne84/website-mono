@@ -48,23 +48,3 @@
     </div>
 </div>
 
-
-@if (Model.LatestVisitors.Any())
-{
-    <div class="row">
-        <div class="col-md-4 latest-visitors">
-            <h2>Latest Visitors</h2>
-                <ul>
-                    @foreach(var visitor in Model.LatestVisitors)
-                    {
-                        <li><p><img src="/Content/images/flags/@(visitor.Country.ToUpper()).gif" /> @visitor.City @visitor.Country @visitor.Date
-                            @if (visitor.LandingPage.Trim().Length > 1)
-                            {
-                                <br />@visitor.LandingPage
-                            }
-                            </p></li>
-                    }
-                </ul>
-        </div>
-    </div>
-}
