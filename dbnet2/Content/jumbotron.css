@@ -1,0 +1,58 @@
+﻿div.jumbotron {
+    background-color: #000000;
+    color: #FFFFFF;
+    padding: 0px;
+}
+
+div.jumbotron h1 small {
+    font-size: 35%;
+    display: block;
+    color: orange;
+}
+
+div.feature-box {
+    padding-bottom: 40px;
+    min-height: 350px;
+}
+
+a.btn {
+    position: absolute;
+    bottom: 0px;
+}
+
+ul {
+    padding-left: 0;
+}
+
+div.blog ul {
+    list-style-type: none;
+    padding-left: 0;
+    display: block;
+}
+
+div.blog ul li {
+    background-image: url("/Content/images/wordpress-icon.png");
+    background-repeat: no-repeat;
+}
+
+div.blog ul li p {
+    margin-left: 40px;
+}
+
+div.feature-box.about-me ul {
+    padding-left: 0;
+    list-style-type: none;
+}
+
+div.feature-box.about-me ul li {
+    display: inline-block;
+}
+
+div.latest-visitors ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+div.latest-visitors ul li p {
+    font-size: 80%;
+}
