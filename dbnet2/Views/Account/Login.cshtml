@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+<form method="POST">
+    <div>
+        <div class="col">Username</div><div class="col"><input type="text" name="username" /></div>
+    </div>
+    <div>
+        <div class="col">Password</div><div class="col"><input type="password" name="password" /></div>
+    </div>
+    <div>
+        <label>Persist Login? <input type="checkbox" name="persist" /></label>
+    </div>
+    <div><input type="submit" value="Login"/></div>
+    
+    @Html.ValidationSummary(true)
+
+</form>

@@ -62,3 +62,11 @@ div.latest-visitors ul {
 div.latest-visitors ul li p {
     font-size: 80%;
 }
+
+div.row {
+    display: block;
+}
+
+div.column {
+    display: inline-block;
+}

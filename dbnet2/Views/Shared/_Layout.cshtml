@@ -1,6 +1,4 @@
-﻿@model dbnet2.Models.ViewModelBase
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -31,51 +29,36 @@
 
   <body>
 
-    <div class="jumbotron">
-      <div class="container">
-        <h1>Dan Byrne <small>Software Engineer from the North East of England</small></h1>
+      <div class="jumbotron">
+          <div class="container">
+              <h1>Dan Byrne <small>Software Engineer from the North East of England</small></h1>
+          </div>
       </div>
-    </div>
+     
+      <div class="container">
+          @RenderBody()
+          <hr>
+          <footer>
+              <p>&copy; Dan Byrne 2005-@DateTime.Now.Year</p>
+              <p>Site constructed using ASP.NET 4.0, MVC 4, Razor, Nginx & Mono 3.2.4 (<a href="http://www.github.com/danbyrne84/website-mono">view source</a>)</p>      
 
-    <div class="container">
-        @RenderBody()
-      <hr>
+              <div class="row">
+                  <div class="col-md-4 latest-visitors">
+                      @if (!HttpContext.Current.User.Identity.IsAuthenticated)
+                      {
+                          <button>@Html.ActionLink("Login", "Login", "Account")</button>
+                      }
+                      else
+                      {
+                          @Html.Partial("~/Views/Partials/AuthenticatedLinks.cshtml")
+                          <button>@Html.ActionLink("Logout", "Logout", "Account")</button>
+                      }
+                  </div>
+              </div>
 
-      <footer>
-        <p>&copy; Dan Byrne 2005-@DateTime.Now.Year</p>
-        <p>Site constructed using ASP.NET 4.0, MVC 4, Razor, Nginx & Mono 3.2.4 (<a href="http://www.github.com/danbyrne84/website-mono">view source</a>)</p>      
+          </footer>
 
-        <div class="row">
-            <div class="col-md-4 latest-visitors">
-                <strong>Stats</strong>
-            </div>
-
-            <div class="col-md-4 latest-visitors">
-                <strong>Some Other Stuff</strong>
-            </div>
-
-            @if (Model.LatestVisitors.Any())
-            {
-                <div class="col-md-4 latest-visitors">
-                    <strong>Latest Visitors</strong>
-                        <ul>
-                            @foreach(var visitor in Model.LatestVisitors)
-                            {
-                                <li><p><img src="/Content/images/flags/@(visitor.Country.ToUpper()).gif" /> @visitor.City @visitor.Country @visitor.Date
-                                    @if (visitor.LandingPage.Trim().Length > 1)
-                                    {
-                                        <br />@visitor.LandingPage
-                                    }
-                                    </p></li>
-                            }
-                        </ul>
-                </div>
-            }
-        </div>
-
-      </footer>
-
-    </div> <!-- /container -->
+      </div> <!-- /container -->
 
   </body>
 </html>

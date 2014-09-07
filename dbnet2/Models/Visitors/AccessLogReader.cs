@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
@@ -19,7 +20,11 @@ namespace dbnet2.Models.Visitors
         public IList<Visitor> GetLastVisitors(int amount)
         {
             var visitors = new List<Visitor>();
-
+            if (!Directory.Exists(LogPath))
+            {
+                return visitors;
+            }
+            
             var lines = System.IO.File.ReadAllLines(LogPath).Reverse();
             var api = new IpInfoApi();
             int taken = 0;

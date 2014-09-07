@@ -1,0 +1,22 @@
+﻿@model dbnet2.Models.ViewModelBase
+
+@if (Model != null && Model.LatestVisitors.Any())
+{
+    <div class="col-md-4 latest-visitors">
+        <strong>Latest Visitors</strong>
+        <ul>
+            @foreach (var visitor in Model.LatestVisitors)
+            {
+                <li>
+                    <p>
+                        <img src="/Content/images/flags/@(visitor.Country.ToUpper()).gif" /> @visitor.City @visitor.Country @visitor.Date
+                        @if (visitor.LandingPage.Trim().Length > 1)
+                        {
+                            <br />@visitor.LandingPage
+                        }
+                    </p>
+                </li>
+            }
+        </ul>
+    </div>
+}
