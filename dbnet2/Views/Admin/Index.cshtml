@@ -1,0 +1,21 @@
+﻿@model dbnet2.Models.Admin.AdminViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div class="row">
+    <div class="col-md-4 feature-box vpn">
+        <h2>VPN & Network Connectivity</h2>
+        <p>Current Status @if (Model.VpnConnection.Enabled)
+                          {
+                              <img src="/Content/"/>
+                          }
+                          else
+                          {
+  
+                          }</p>
+
+    </div>
+</div>

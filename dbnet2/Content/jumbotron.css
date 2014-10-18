@@ -1,24 +1,23 @@
 ﻿div.jumbotron {
-    background-color: #000000;
     color: #FFFFFF;
     padding: 0px;
+    background-image: url("/Content/images/header.jpg");
+    border-bottom: 1px solid silver;
+    min-height: 80px;
 }
 
 div.jumbotron h1 {
-    font-family: 'Press Start 2P', cursive;
+    /*font-family: cursive;*/
     font-size: 38px;
 }
 
 div.jumbotron h1 small {
-    font-size: 55%;
-    display: block;
-    color: #428bca;
+    font-size: 40%;
     font-family: sans-serif;
 }
 
 div.feature-box {
     padding-bottom: 40px;
-    min-height: 350px;
 }
 
 a.btn {
@@ -28,6 +27,7 @@ a.btn {
 
 ul {
     padding-left: 0;
+    list-style-type: none;
 }
 
 div.blog ul {
@@ -39,6 +39,7 @@ div.blog ul {
 div.blog ul li {
     background-image: url("/Content/images/wordpress-icon.png");
     background-repeat: no-repeat;
+    min-height: 35px;
 }
 
 div.blog ul li p {
@@ -69,4 +70,10 @@ div.row {
 
 div.column {
     display: inline-block;
+}
+
+h2 {
+    font-size: 18px;
+    text-transform: uppercase;
+    font-weight: bold;
 }
