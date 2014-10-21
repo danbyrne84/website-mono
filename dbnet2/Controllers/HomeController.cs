@@ -9,6 +9,7 @@ using System.Xml;
 using dbnet2.Models;
 using dbnet2.Models.Blog;
 using dbnet2.Models.Visitors;
+using dbnet2.Models.Widgets.BuildMonitor;
 
 namespace dbnet2.Controllers
 {
@@ -18,14 +19,17 @@ namespace dbnet2.Controllers
         {
             var blogUrl = new Uri(ConfigurationManager.AppSettings["blogRssUrl"]);
             var accessLogPath = ConfigurationManager.AppSettings["accessLog"];
+            var teamCityUrl = ConfigurationManager.AppSettings["teamCityUrl"];
 
             var blogReader = new BlogReader(blogUrl);
             var accessLogReader = new AccessLogReader(accessLogPath);
+            var buildMonitor = new TeamCityBuildMonitor(teamCityUrl);
 
             var viewModel = new HomeViewModel 
             { 
                 BlogItems = blogReader.GetSummaryOfLatest(5), 
-                LatestVisitors = accessLogReader.GetLastVisitors(5)
+                LatestVisitors = accessLogReader.GetLastVisitors(5),
+                BuildStatus = buildMonitor.GetSummary()
             };
 
             return View(viewModel);
