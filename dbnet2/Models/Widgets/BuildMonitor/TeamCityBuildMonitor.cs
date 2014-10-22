@@ -21,7 +21,7 @@ namespace dbnet2.Models.Widgets.BuildMonitor
 
             Client = new HttpClient
             {
-                BaseAddress = new Uri(baseUri)
+                //BaseAddress = new Uri(baseUri)
             };
 
             Client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic",
@@ -49,7 +49,7 @@ namespace dbnet2.Models.Widgets.BuildMonitor
 
         public List<Project> GetProjects()
         {
-            var xml = Client.GetStringAsync("/httpAuth/app/rest/projects").Result;
+            var xml = Client.GetStringAsync("http://home.danielbyrne.net:81/httpAuth/app/rest/projects").Result;
 
             var projectSummary = new XmlDocument();
             projectSummary.LoadXml(xml);
@@ -71,7 +71,7 @@ namespace dbnet2.Models.Widgets.BuildMonitor
         public List<BuildStatus> GetBuildStatus(Project project)
         {
             // get project information
-            var projectSummaryXml = Client.GetStringAsync(String.Format("/httpAuth/app/rest/projects/id:{0}", project.Id)).Result;
+            var projectSummaryXml = Client.GetStringAsync(String.Format("http://home.danielbyrne.net:81/httpAuth/app/rest/projects/id:{0}", project.Id)).Result;
             var projectSummaryDoc = new XmlDocument();
             projectSummaryDoc.LoadXml(projectSummaryXml);
 
@@ -97,7 +97,7 @@ namespace dbnet2.Models.Widgets.BuildMonitor
 
         public BuildStatus GetBuildDetails(BuildStatus build)
         {
-            var xml = Client.GetStringAsync(String.Format("/httpAuth/app/rest/buildTypes/id:{0}/builds", build.Id)).Result;
+            var xml = Client.GetStringAsync(String.Format("http://home.danielbyrne.net:81/httpAuth/app/rest/buildTypes/id:{0}/builds", build.Id)).Result;
             
             var buildSummary = new XmlDocument();
             buildSummary.LoadXml(xml);
@@ -111,7 +111,7 @@ namespace dbnet2.Models.Widgets.BuildMonitor
                 : BuildStatus.BuildState.Failed);
 
             // get latest build XML
-            var latestBuildXml = Client.GetStringAsync(String.Format("/httpAuth/app/rest/buildTypes/id:{0}/builds/id:{1}", build.Id, build.BuildNumber)).Result;
+            var latestBuildXml = Client.GetStringAsync(String.Format("http://home.danielbyrne.net:81/httpAuth/app/rest/buildTypes/id:{0}/builds/id:{1}", build.Id, build.BuildNumber)).Result;
             var latestBuildDoc = new XmlDocument();
             latestBuildDoc.LoadXml(latestBuildXml);
 
